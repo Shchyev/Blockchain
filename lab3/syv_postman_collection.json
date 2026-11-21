@@ -1,0 +1,179 @@
+{
+  "info": {
+    "name": "SYV Blockchain (Shchuryk)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "ID вузла",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/node/id",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "node",
+            "id"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Майнінг блоку (винагорода 10)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/mine",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "mine"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Баланс майнера",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/balance/{{node_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "balance",
+            "{{node_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Переказ 10 монет",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/transactions/new",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "transactions",
+            "new"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sender\": \"{{node_id}}\",\n  \"recipient\": \"Shchuryk\",\n  \"amount\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Мемпул",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/mempool",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "mempool"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ланцюг",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/chain",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "chain"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Реєстрація вузлів (ЛР4)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/nodes/register",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "nodes",
+            "register"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nodes\": [\n    \"http://localhost:5001\",\n    \"http://localhost:5002\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Консенсус (ЛР4)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/nodes/resolve",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "nodes",
+            "resolve"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "node_id",
+      "value": "<встав node_identifier з GET /node/id>"
+    }
+  ]
+}
